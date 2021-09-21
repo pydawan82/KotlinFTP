@@ -5,6 +5,11 @@ import org.json.JSONObject
 import kotlin.reflect.KProperty1
 import kotlin.reflect.full.memberProperties
 
+fun toJsonObject(o: Any): JSONObject {
+    assertSerializable(o)
+    return unsafeToJSON(o)
+}
+
 private fun isSerializable(o: Any): Boolean {
     return o::class.annotations.map {
         it is Serializable
@@ -22,11 +27,6 @@ private fun shouldIgnore(property: KProperty1<out Any, Any?>): Boolean {
     return property.annotations.map {
         it is Ignore
     }.contains(true)
-}
-
-fun toJsonObject(o: Any): JSONObject {
-    assertSerializable(o)
-    return unsafeToJSON(o)
 }
 
 
