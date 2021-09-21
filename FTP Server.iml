@@ -18,5 +18,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="jetbrains.kotlin.maven.plugin" level="project" />
+    <orderEntry type="library" name="json" level="project" />
   </component>
 </module>
